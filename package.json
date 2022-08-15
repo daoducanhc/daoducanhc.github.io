@@ -1,0 +1,14 @@
+{
+  "homepage": "https://github.com/daoducanhc/daoducanhc.github.io",
+  "name": "nanogen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "site.config.js",
+  "scripts": {
+    "start": "nanogen start",
+    "build": "nanogen build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
