@@ -1,21 +1,26 @@
-# NanoGen
+## Some note for newbie:
 
-Micro static site generator in Node.js
+### 1, No need CNAME file
 
-See the post: https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22
+### 2, No need homepage in package.json(?)
 
-See the example site generated at: https://doug2k1.github.io/nanogen
+### 3, In /settings/pages
 
-## Setup
+Change custom domain
 
-```console
-$ npm i
-$ npm run build
-$ npm run serve
+Set branch to /docs (root path to build from docs/index.html) 
+
+Update IP address if needed [Docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
+
+### 4, Useful link
+
+[Build file](https://www.webdevdrops.com/en/build-static-site-generator-nodejs-8969ebe34b22/?fbclid=IwAR1aQi7l0VhkeZ61oLsO-DBGyCwHo8iwclU5twU2HQe8KCqBunSv-jF47pM)
+
+[Example](https://github.com/doug2k1/nanogen/tree/legacy)
+
 ```
+npm i
+npm run build
+npm run build:prod
 
-Go to http://localhost:5000 to see the generated site.
-
-## How to use
-
-If you want to use NanoGen to generate your own site, just fork this repository and add your content to the `src` folder.
+```
