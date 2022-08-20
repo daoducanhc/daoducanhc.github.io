@@ -4,10 +4,10 @@ module.exports = {
   site: {
     title: 'NanoGen',
     description: 'Micro Static Site Generator in Node.js',
-    basePath: process.env.NODE_ENV === 'production' ? '/nanogen' : '',
+    basePath: process.env.NODE_ENV === 'production' ? '' : '',
     projects
   },
   build: {
-    outputPath: process.env.NODE_ENV === 'production' ? './docs' : './public'
+    outputPath: process.env.NODE_ENV === 'production' ? './docs' : './output',
   }
 };
