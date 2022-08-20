@@ -8,6 +8,6 @@ module.exports = {
     projects
   },
   build: {
-    outputPath: process.env.NODE_ENV === 'production' ? './docs' : './output',
+    outputPath: process.env.NODE_ENV === 'production' ? './docs' : './public',
   }
 };
