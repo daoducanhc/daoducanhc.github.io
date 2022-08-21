@@ -1,8 +1,8 @@
 ## Some note for newbie:
 
-### 1, No need CNAME file
+### 1, CNAME file added (see in build.js line 11:20, line 80:87)
 
-### 2, No need homepage in package.json(?)
+### 2, No need homepage in package.json
 
 ### 3, In /settings/pages
 
