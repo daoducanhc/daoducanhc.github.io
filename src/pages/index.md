@@ -1,123 +1,105 @@
-This example site was generated with <a href="https://github.com/doug2k1/nanogen">NanoGen</a>, a micro static site generator built for learning purposes.
+# [](#create-a-blog-site) Create a blog site in a nutshell
 
+Welcome to my very first post (hope it will not be the last one) of my personal blog. 
 
+This topic will be how to create a blog site with your custom domain name.
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+# [](#domain-name-registation) Domain name registation
 
-[Link to another page](another-page).
+First step, you will need to register a domain name of your own.
 
-There should be whitespace between paragraphs.
+Go to your favorite registation domain name and pick.
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+There are some few notice if you want your domain name look professional.
 
-# [](#header-1)Header 1
+* **COM** — commercial websites, though open to everyone
+* **NET** — network websites, though open to everyone
+* **ORG** — non-profit organization websites, though open to everyone
+* **EDU** — restricted to schools and educational organizations
+* **MIL** — restricted to the U.S. military
+* **GOV** — restricted to the U.S. government
+* **US**, UK, RU and other two-letter country codes — each is assigned to a domain name authority in the respective country
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+# [](#config-domain-name) Config domain name
 
-## [](#header-2)Header 2
+In this step, you have to config 2 things
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+## Name Server
 
-### [](#header-3)Header 3
+Normally, you will use the **default name servers** of the site that you register your domain name.
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
+In my case, I register at _matbao_, so I will use their default name servers.
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
+![](assets/images/.png)
 
-#### [](#header-4)Header 4
+## DNS
 
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
+Now, you have to create 3 records (in case of using github to host your website)
 
-##### [](#header-5)Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### [](#header-6)Header 6
-
-| head1        | head two          | three |
+| Host        | Type         | Value |
 |:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
+| @           | A | 185.199.108.153<br>185.199.109.153<br>185.199.110.153<br>185.199.111.153  |
+| www | CNAME   | yourname.github.io  |
+| @           | NS     | yourdefault_ns.com   |
 
-### There's a horizontal rule below this.
+In my case, it would be:
 
-* * *
+| Host        | Type         | Value |
+|:-------------|:------------------|:------|
+| @           | A | 185.199.108.153<br>185.199.109.153<br>185.199.110.153<br>185.199.111.153  |
+| www | CNAME   | daoducanhc.github.io  |
+| @           | NS     | ns1.matbao.com<br>ns2.matbao.com   |
 
-### Here is an unordered list:
+# [](#build-a-static-site-generator) Build a static site generator
 
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
+This part is mostly contributed by another guildline [https://www.webdevdrops.com/en/build-static-site-generator-nodejs-8969ebe34b22/?fbclid=IwAR1aQi7l0VhkeZ61oLsO-DBGyCwHo8iwclU5twU2HQe8KCqBunSv-jF47pM](Original instruction)
 
-### And an ordered list:
+In simple, all you need to do is:
 
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
+## Fork repo
+* Fork this repo [GitHubRepo](https://github.com/doug2k1/nanogen/tree/legacy)
+* Add file CNAME and fill it with your domain name (my case is chrisdao.net)
 
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![](assets/images/octocat.png)
-
-### Large image
-
-![](assets/images/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
+## Run
+* Install npm
+* Install required packages by npm
 ```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+npm i
+```
+* Run repo
+
+> For local testing
+```
+npm run build
+npm run serve
 ```
 
+> For custom domain
 ```
-The final element.
+npm run build:prod
+```
+# [](#make-it-happen-in-your-own-domain) Make it happen in your own domain
+
+## Config Pages in your github repo
+
+After your command ``` npm run build:prod ```, it will generate a folder ```docs```. This folder is what you want to be shown in your website. 
+
+To make that happen, go to ```Settings```, ```Pages``` and set build from branch ```master```, ```/docs```
+
+Go down to ```Custom domain``` and fill it with your website (my case is chrisdao.net)
+
+Now if you check your website, it is only html without css. It because the source code have the wrong link css (they link to their own name repo ```nanogen```).
+
+## Modify some code
+
+In ```site.config.js```, change line 7 
+
+```
+basePath: process.env.NODE_ENV === 'production' ? '/nanogen' : '',
+```
+
+to
+
+```
+basePath: process.env.NODE_ENV === 'production' ? '' : '',
 ```
