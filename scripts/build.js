@@ -8,6 +8,16 @@ const config = require('../site.config');
 
 const srcPath = './src';
 const distPath = config.build.outputPath;
+const DIST_CNAME_PATH = `${distPath}/CNAME`;
+const TEMP_CNAME_PATH = `./CNAME`;
+
+// copy CNAME file out of distPath
+if (process.env.NODE_ENV === 'production') {
+  if (fse.existsSync(DIST_CNAME_PATH)) {
+    fse.copyFileSync(DIST_CNAME_PATH, TEMP_CNAME_PATH);
+    console.log('Move CNAME out successfully');
+  }
+}
 
 // clear destination folder
 fse.emptyDirSync(distPath);
@@ -63,4 +73,15 @@ files.forEach((file, i) => {
 
   // save the html file
   fse.writeFileSync(`${destPath}/${fileData.name}.html`, completePage);
-});
+}
+
+);
+
+if (process.env.NODE_ENV === 'production') {
+  if (fse.existsSync(TEMP_CNAME_PATH)) {
+    fse.copyFileSync(TEMP_CNAME_PATH, DIST_CNAME_PATH);
+    fse.removeSync(TEMP_CNAME_PATH);
+    console.log(distPath);
+    console.log('Copy CNAME back successfully');
+  }
+}
