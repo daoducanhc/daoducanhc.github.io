@@ -52,7 +52,7 @@ In my case, it would be:
 
 # [](#build-a-static-site-generator) Build a static site generator
 
-This part is mostly contributed by another guildline [https://www.webdevdrops.com/en/build-static-site-generator-nodejs-8969ebe34b22/?fbclid=IwAR1aQi7l0VhkeZ61oLsO-DBGyCwHo8iwclU5twU2HQe8KCqBunSv-jF47pM](Original instruction)
+This part is mostly contributed by another guildline [Original instruction](https://www.webdevdrops.com/en/build-static-site-generator-nodejs-8969ebe34b22/?fbclid=IwAR1aQi7l0VhkeZ61oLsO-DBGyCwHo8iwclU5twU2HQe8KCqBunSv-jF47pM)
 
 In simple, all you need to do is:
 
