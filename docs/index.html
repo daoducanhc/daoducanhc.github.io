@@ -23,132 +23,118 @@
 </section>
 
 <section class="main-content">
-  <p>This example site was generated with <a href="https://github.com/doug2k1/nanogen">NanoGen</a>, a micro static site generator built for learning purposes.</p>
-<p>Text can be <strong>bold</strong>, <em>italic</em>, or <del>strikethrough</del>.</p>
-<p><a href="another-page">Link to another page</a>.</p>
-<p>There should be whitespace between paragraphs.</p>
-<p>There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.</p>
-<h1 id="header-1"><a href="#header-1"></a>Header 1</h1>
-<p>This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.</p>
-<h2 id="header-2"><a href="#header-2"></a>Header 2</h2>
-<blockquote>
-<p>This is a blockquote following a header.</p>
-<p>When something is important enough, you do it even if the odds are not in your favor.</p>
-</blockquote>
-<h3 id="header-3"><a href="#header-3"></a>Header 3</h3>
-<pre><code class="lang-js">// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require(&#39;./lang/&#39; + l)
-  return true;
-}
-</code></pre>
-<pre><code class="lang-ruby"># Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, &quot;= #{version}&quot;)
-end
-</code></pre>
-<h4 id="header-4"><a href="#header-4"></a>Header 4</h4>
+  <h1 id="-create-a-blog-site-in-a-nutshell"><a href="#create-a-blog-site"></a> Create a blog site in a nutshell</h1>
+<p>Welcome to my very first post (hope it will not be the last one) of my personal blog. </p>
+<p>This topic will be how to create a blog site with your custom domain name.</p>
+<h1 id="-domain-name-registation"><a href="#domain-name-registation"></a> Domain name registation</h1>
+<p>First step, you will need to register a domain name of your own.</p>
+<p>Go to your favorite registation domain name and pick.</p>
+<p>There are some few notice if you want your domain name look professional.</p>
 <ul>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
-<li>This is an unordered list following a header.</li>
+<li><strong>COM</strong> — commercial websites, though open to everyone</li>
+<li><strong>NET</strong> — network websites, though open to everyone</li>
+<li><strong>ORG</strong> — non-profit organization websites, though open to everyone</li>
+<li><strong>EDU</strong> — restricted to schools and educational organizations</li>
+<li><strong>MIL</strong> — restricted to the U.S. military</li>
+<li><strong>GOV</strong> — restricted to the U.S. government</li>
+<li><strong>US</strong>, UK, RU and other two-letter country codes — each is assigned to a domain name authority in the respective country</li>
 </ul>
-<h5 id="header-5"><a href="#header-5"></a>Header 5</h5>
-<ol>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-<li>This is an ordered list following a header.</li>
-</ol>
-<h6 id="header-6"><a href="#header-6"></a>Header 6</h6>
+<h1 id="-config-domain-name"><a href="#config-domain-name"></a> Config domain name</h1>
+<p>In this step, you have to config 2 things</p>
+<h2 id="name-server">Name Server</h2>
+<p>Normally, you will use the <strong>default name servers</strong> of the site that you register your domain name.</p>
+<p>In my case, I register at <em>matbao</em>, so I will use their default name servers.</p>
+<p><img src="assets/images/.png" alt=""></p>
+<h2 id="dns">DNS</h2>
+<p>Now, you have to create 3 records (in case of using github to host your website)</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">head1</th>
-<th style="text-align:left">head two</th>
-<th style="text-align:left">three</th>
+<th style="text-align:left">Host</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">ok</td>
-<td style="text-align:left">good swedish fish</td>
-<td style="text-align:left">nice</td>
+<td style="text-align:left">@</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">185.199.108.153<br>185.199.109.153<br>185.199.110.153<br>185.199.111.153</td>
 </tr>
 <tr>
-<td style="text-align:left">out of stock</td>
-<td style="text-align:left">good and plenty</td>
-<td style="text-align:left">nice</td>
+<td style="text-align:left">www</td>
+<td style="text-align:left">CNAME</td>
+<td style="text-align:left">yourname.github.io</td>
 </tr>
 <tr>
-<td style="text-align:left">ok</td>
-<td style="text-align:left">good <code>oreos</code></td>
-<td style="text-align:left">hmm</td>
-</tr>
-<tr>
-<td style="text-align:left">ok</td>
-<td style="text-align:left">good <code>zoute</code> drop</td>
-<td style="text-align:left">yumm</td>
+<td style="text-align:left">@</td>
+<td style="text-align:left">NS</td>
+<td style="text-align:left">yourdefault_ns.com</td>
 </tr>
 </tbody>
 </table>
-<h3 id="there-s-a-horizontal-rule-below-this-">There&#39;s a horizontal rule below this.</h3>
-<hr>
-<h3 id="here-is-an-unordered-list-">Here is an unordered list:</h3>
+<p>In my case, it would be:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Host</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">@</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">185.199.108.153<br>185.199.109.153<br>185.199.110.153<br>185.199.111.153</td>
+</tr>
+<tr>
+<td style="text-align:left">www</td>
+<td style="text-align:left">CNAME</td>
+<td style="text-align:left">daoducanhc.github.io</td>
+</tr>
+<tr>
+<td style="text-align:left">@</td>
+<td style="text-align:left">NS</td>
+<td style="text-align:left">ns1.matbao.com<br>ns2.matbao.com</td>
+</tr>
+</tbody>
+</table>
+<h1 id="-build-a-static-site-generator"><a href="#build-a-static-site-generator"></a> Build a static site generator</h1>
+<p>This part is mostly contributed by another guildline <a href="https://www.webdevdrops.com/en/build-static-site-generator-nodejs-8969ebe34b22/?fbclid=IwAR1aQi7l0VhkeZ61oLsO-DBGyCwHo8iwclU5twU2HQe8KCqBunSv-jF47pM">Original instruction</a></p>
+<p>In simple, all you need to do is:</p>
+<h2 id="fork-repo">Fork repo</h2>
 <ul>
-<li>Item foo</li>
-<li>Item bar</li>
-<li>Item baz</li>
-<li>Item zip</li>
+<li>Fork this repo <a href="https://github.com/doug2k1/nanogen/tree/legacy">GitHubRepo</a></li>
+<li>Add file CNAME and fill it with your domain name (my case is chrisdao.net)</li>
 </ul>
-<h3 id="and-an-ordered-list-">And an ordered list:</h3>
-<ol>
-<li>Item one</li>
-<li>Item two</li>
-<li>Item three</li>
-<li>Item four</li>
-</ol>
-<h3 id="and-a-nested-list-">And a nested list:</h3>
+<h2 id="run">Run</h2>
 <ul>
-<li>level 1 item<ul>
-<li>level 2 item</li>
-<li>level 2 item<ul>
-<li>level 3 item</li>
-<li>level 3 item</li>
+<li>Install npm</li>
+<li>Install required packages by npm<pre><code>npm i
+</code></pre></li>
+<li>Run repo</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>level 1 item<ul>
-<li>level 2 item</li>
-<li>level 2 item</li>
-<li>level 2 item</li>
-</ul>
-</li>
-<li>level 1 item<ul>
-<li>level 2 item</li>
-<li>level 2 item</li>
-</ul>
-</li>
-<li>level 1 item</li>
-</ul>
-<h3 id="small-image">Small image</h3>
-<p><img src="assets/images/octocat.png" alt=""></p>
-<h3 id="large-image">Large image</h3>
-<p><img src="assets/images/branching.png" alt=""></p>
-<h3 id="definition-lists-can-be-used-with-html-syntax-">Definition lists can be used with HTML syntax.</h3>
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-<pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-</code></pre><pre><code>The final element.
+<blockquote>
+<p>For local testing</p>
+<pre><code>npm run build
+npm run serve
+</code></pre></blockquote>
+<blockquote>
+<p>For custom domain</p>
+<pre><code>npm run build:prod
+</code></pre></blockquote>
+<h1 id="-make-it-happen-in-your-own-domain"><a href="#make-it-happen-in-your-own-domain"></a> Make it happen in your own domain</h1>
+<h2 id="config-pages-in-your-github-repo">Config Pages in your github repo</h2>
+<p>After your command <code>npm run build:prod</code>, it will generate a folder <code>docs</code>. This folder is what you want to be shown in your website. </p>
+<p>To make that happen, go to <code>Settings</code>, <code>Pages</code> and set build from branch <code>master</code>, <code>/docs</code></p>
+<p>Go down to <code>Custom domain</code> and fill it with your website (my case is chrisdao.net)</p>
+<p>Now if you check your website, it is only html without css. It because the source code have the wrong link css (they link to their own name repo <code>nanogen</code>).</p>
+<h2 id="modify-some-code">Modify some code</h2>
+<p>In <code>site.config.js</code>, change line 7 </p>
+<pre><code>basePath: process.env.NODE_ENV === &#39;production&#39; ? &#39;/nanogen&#39; : &#39;&#39;,
+</code></pre><p>to</p>
+<pre><code>basePath: process.env.NODE_ENV === &#39;production&#39; ? &#39;&#39; : &#39;&#39;,
 </code></pre>
 
   <footer class="site-footer">
