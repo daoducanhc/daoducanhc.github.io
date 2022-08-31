@@ -24,7 +24,7 @@ In __each layer__, we update the embedded information in:
 
 without changing the connectivity of the graph.
 
-![Update graph](/src/assets/images/graph_update.png)
+![Update graph](/assets/images/graph_update.png)
 
 
 ## Pooling information
