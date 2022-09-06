@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
   <meta charset="UTF-8">
-<title>Graph Neuron Network | Chris Dao&#39;s Blog</title>
+<title>Graph Neural Network | Chris Dao&#39;s Blog</title>
 <meta name="description" content="???"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#157878">
@@ -16,8 +16,9 @@
 </section>
 
 <section class="main-content">
-  <h1 id="graph-neuron-network">Graph Neuron Network</h1>
-<p><a href="https://distill.pub/2021/gnn-intro/">Really good tutorial</a></p>
+  <h1 id="graph-neural-network">Graph Neural Network</h1>
+<p><a href="https://distill.pub/2021/gnn-intro/">A really good blog introduction</a></p>
+<p><a href="https://www.youtube.com/playlist?list=PLV8yxwGOxvvoNkzPfCx2i8an--Tkt7O8Z">A really good explaination video</a></p>
 <h2 id="workflow">Workflow</h2>
 <p><strong>Graph-in, graph-out</strong> mechanism</p>
 <ul>
@@ -37,6 +38,8 @@
 </ul>
 <p>without changing the connectivity of the graph.</p>
 <p><img src="/assets/images/graph_update.png" alt="Update graph"></p>
+<h2 id="fundamental-idea-of-gnn">Fundamental idea of GNN</h2>
+<p>The whole point of GNN is to find a <strong>suitable representation of the graph data</strong> for neural network.</p>
 <h2 id="pooling-information">Pooling information</h2>
 <p><strong>Example: Predict node labels</strong></p>
 <ul>
@@ -54,6 +57,59 @@
 </ul>
 </li>
 </ul>
+<h2 id="passing-messages">Passing messages</h2>
+<ul>
+<li>Using graph connectivity to update information<ul>
+<li>Information of a node is updated by its neighbors. Graddually, &quot;every single node of the graph knows something about all other nodes.&quot; <a href="https://www.youtube.com/watch?v=ABCGCf8cJOE">Youtube video</a></li>
+<li>Same for edges  </li>
+</ul>
+</li>
+</ul>
+<h2 id="some-note">Some note</h2>
+<h3 id="about-message-passing-network-that-torch-geometric-nn-messagepassing-support">About message passing network that torch.geometric.nn.MessagePassing support</h3>
+<ul>
+<li>GCNConv<ul>
+<li>Focus on embedding nodes</li>
+<li>NOT natually support edge features and directed edges</li>
+</ul>
+</li>
+<li>SAGEConv<ul>
+<li>Node embedding in <strong>large graph</strong></li>
+</ul>
+</li>
+<li>ChebConv<ul>
+<li>High dimensional dataset</li>
+</ul>
+</li>
+</ul>
+<h3 id="about-graph">About graph</h3>
+<ul>
+<li>Graph is permutation invariant<ul>
+<li>If we permute the nodes, the graph is still the same</li>
+<li>If we permute the edges, the graph is still the same</li>
+</ul>
+</li>
+</ul>
+<p>=&gt; So we cannot use adjacency matrix as input </p>
+<h3 id="about-hyperparameters">About hyperparameters</h3>
+<ul>
+<li><p>Number of layers (depth)</p>
+</li>
+<li><p>Aggregation function (sum, mean, max, min, etc)</p>
+</li>
+<li><p>Embedding dimension of nodes, edges, graphs</p>
+</li>
+</ul>
+<p>Even different ways of featurizing &amp; constructing the graph can lead to different results</p>
+<h3 id="about-global-graph-pooling">About global graph pooling</h3>
+<p>One difficulty: neural networks expected fix size input</p>
+<ul>
+<li>Solution: global pooling<ul>
+<li>Each graph has different number of nodes but has the same number of features</li>
+</ul>
+</li>
+</ul>
+<p><img src="/assets/images/global_pooling.png" alt="global pooling"></p>
 
 </section>
 </body>
